@@ -1,0 +1,10 @@
+services:
+  phpactor:
+    build:
+      context: ./phpactor
+    image: local-phpactor:latest
+
+  nodelsps:
+    build:
+      context: ./nodelsps
+    image: local-nodelsps:latest
