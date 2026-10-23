@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker run --rm -i \
+  -v "$PWD":"$PWD" \
+  -v "$HOME/.cache/phpactor:/root/.cache/phpactor" \
+  -w "$PWD" \
+  local-phpactor:latest "$@"

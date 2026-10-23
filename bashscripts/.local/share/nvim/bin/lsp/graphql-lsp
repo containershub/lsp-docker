@@ -1,0 +1,19 @@
+#!/bin/bash
+
+TARGET_DIR=$(git rev-parse --show-toplevel 2>/dev/null)
+if [ -z "$TARGET_DIR" ]; then
+  CURRENT="$PWD"
+  while [ "$CURRENT" != "/" ]; do
+    if [ -f "$CURRENT/package.json" ]; then TARGET_DIR="$CURRENT"; break; fi
+    CURRENT=$(dirname "$CURRENT")
+  done
+fi
+HOST_DIR="${TARGET_DIR:-$HOME}"
+# The above snippet is for finding the correct path and can be applied to all
+# the scripts not only graphql-lsp!
+
+docker run --rm -i \
+  -v "$TARGET_DIR":"$TARGET_DIR" \
+  -w "$TARGET_DIR" \
+  local-nodelsps:latest \
+  graphql-lsp server -m stream "$@"
