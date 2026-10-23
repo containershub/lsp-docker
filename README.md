@@ -153,3 +153,12 @@ Configurations for other LSPs:
 These are all the LSPs I use for development and as of now these are the only
 ones that come with this setup. However you can install other LSPs yourself and
 configure them as shown above!
+
+### Step 3 - Test
+Open a PHP file e.g. `nvim index.php` and you'll see that PHP diagnosis is
+working code suggestions are available.
+
+Also run `docker container ls` so you can see that `local-phpactor:latest` or
+`local-nodelsps:latest` is up and running or both of them. If you close
+Neovim and run `docker container ls` again you'll see that that container is
+down!
